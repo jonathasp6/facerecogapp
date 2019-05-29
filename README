@@ -1,4 +1,6 @@
 Baixar OpenOC versão  3.4.6 => https://opencv.org/release/opencv-3-4-6/
+Adicionar no diretorio do repositorio em uma pasta com o nome opencv-3.4.6-android-sdk.
+Ex: facerecogapp/opencv-3.4.6-android-sdk/OpenCV-android-sdk
 
 Utilizar o ndk versão r10e => https://developer.android.com/ndk/downloads/older_releases.html
 
