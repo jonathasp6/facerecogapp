@@ -1,5 +1,6 @@
 package br.com.jonathas.facerecog;
 
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,8 +10,10 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.imgproc.Imgproc;
 
 import br.com.jonathas.facerecog.tool.OpenCVTool;
 
@@ -93,7 +96,17 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         nrgba = inputFrame.rgba();
-        OpenCVTool.faceDetection(nrgba.getNativeObjAddr());
-        return nrgba;
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Mat nRgbaT=nrgba.t();
+            Core.flip(nrgba.t(), nRgbaT,1);
+            Imgproc.resize(nRgbaT,nRgbaT, nrgba.size());
+            OpenCVTool.faceDetection(nRgbaT.getNativeObjAddr());
+            return nRgbaT;
+        }
+        else {
+            OpenCVTool.faceDetection(nrgba.getNativeObjAddr());
+            return nrgba;
+        }
     }
 }
