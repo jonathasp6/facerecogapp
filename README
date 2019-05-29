@@ -1,0 +1,13 @@
+Baixar OpenOC versão  3.4.6 => https://opencv.org/release/opencv-3-4-6/
+
+Utilizar o ndk versão r10e => https://developer.android.com/ndk/downloads/older_releases.html
+
+Modificar a configuração da localização do openCV em Android.mk no diretorio onde está o codigo C++.
+FaceRecog/app/src/main/jni/Android.mk
+
+Modificar a localização do NDK no build.gradle dentro do diretorio app.
+FaceRecog/app/src/build.gradle
+
+Adicionar haarcascade_eye_tree_eyeglasses.xml e haarcascade_frontalface_alt.xml no diretorio Download no celular.
+
+Configurar a permissão da aplicação para utilizar a camera e acesso ao disco.
