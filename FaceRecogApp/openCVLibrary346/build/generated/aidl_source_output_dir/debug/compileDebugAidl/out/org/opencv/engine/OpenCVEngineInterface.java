@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: /home/jonathas/facerecogapp/FaceRecogApp/openCVLibrary346/src/main/aidl/org/opencv/engine/OpenCVEngineInterface.aidl
+ * Original file: /home/jonathas/nova/facerecogapp/FaceRecogApp/openCVLibrary346/src/main/aidl/org/opencv/engine/OpenCVEngineInterface.aidl
  */
 package org.opencv.engine;
 /**

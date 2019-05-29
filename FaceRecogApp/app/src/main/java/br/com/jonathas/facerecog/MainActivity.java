@@ -12,11 +12,17 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 
+import br.com.jonathas.facerecog.tool.OpenCVTool;
+
 public class MainActivity extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2
 {
 
     JavaCameraView javaCameraView;
     Mat nrgba;
+
+    static {
+        System.loadLibrary("MyLib");
+    }
 
     BaseLoaderCallback baseLoaderCallback = new BaseLoaderCallback(this) {
         @Override
@@ -87,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements CameraBridgeViewB
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         nrgba = inputFrame.rgba();
+        OpenCVTool.faceDetection(nrgba.getNativeObjAddr());
         return nrgba;
     }
 }
